@@ -159,8 +159,6 @@ public class CalculatorTest {
 	public void testConvertedX() {
 		Calculator c = new Calculator();
 		ArrayList<Double> x = new ArrayList<Double>();
-//		x.add("2x");
-//		x.add("5x");
 		x.add(2.0);
 		x.add(5.0);
 		assertEquals(x, c.conversion("4x^2 - 2x + 5x = 0"));
