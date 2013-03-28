@@ -205,7 +205,8 @@ public class Calculator {
 	}
 
 	public double square(double a, double b) {
-		if (a ==0 && b==0) throw new DoubleZeroException("You can't  have two zeros");
+		if (a == 0 && b == 0)
+			throw new DoubleZeroException("You can't  have two zeros");
 		double pom = a;
 		while (b - 1 != 0) {
 			a = a * pom;
@@ -222,9 +223,53 @@ public class Calculator {
 		}
 		return b + "";
 	}
+
+	// Dio na popravnom kolokvijumu
+
+	public String[] splitEquation(String equation) {
+		String[] part = equation.split(" ");
+		for (int i = 0; i < part.length; i++) {
+			if (part[i].contains("x^3"))
+				throw new IllegalXValueException(
+						"Wrong quadratic equation annotation!");
+		}
+		return part;
+	}
+
+	public ArrayList<String> quadraticEquationX(String equation) {
+		String[] eq = splitEquation(equation);
+		ArrayList<String> square = new ArrayList<String>();
+		for (int i = 0; i < eq.length; i++) {
+			if (eq[i].contains("x") && !eq[i].contains("x^2")) {
+				String a = eq[i].substring(eq[i].indexOf("x") - 1,
+						eq[i].indexOf("x"));
+				square.add(a);
+			}
+		}
+		return square;
+	}
+
+	public ArrayList<String> quadraticEquationX2(String equation) {
+		String[] eq = splitEquation(equation);
+		ArrayList<String> square = new ArrayList<String>();
+		for (int i = 0; i < eq.length; i++) {
+			if (eq[i].contains("x^2")) {
+				String a = eq[i].substring(eq[i].indexOf("x^2") - 1,
+						eq[i].indexOf("x^2"));
+				square.add(a);
+			}
+		}
+		return square;
+	}
 	
-	public double quadraticEquation(String equation) {
-		return 0.0;
+	public ArrayList<Double> conversion(String eq) {
+		ArrayList<String> qEX = quadraticEquationX(eq);
+		ArrayList<Double> dEX = new ArrayList<Double>();
+		for (int i = 0; i < qEX.size(); i++) {
+			Double a = Double.parseDouble(qEX.get(i));
+			dEX.add(a);
+		}
+		return dEX;
 	}
 
 }
