@@ -222,5 +222,9 @@ public class Calculator {
 		}
 		return b + "";
 	}
+	
+	public double quadraticEquation(String equation) {
+		return 0.0;
+	}
 
 }

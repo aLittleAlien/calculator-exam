@@ -146,6 +146,10 @@ public class CalculatorTest {
 		c.square(0.0, 0.0);
 	}
 	
-	
+	@Test
+	public void testQuadraticEquation() {
+		Calculator c = new Calculator();
+		assertEquals("3", c.quadraticEquation(""));
+	}
 
 }
